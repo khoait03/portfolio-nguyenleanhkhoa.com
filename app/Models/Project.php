@@ -13,6 +13,7 @@ class Project extends Model
         'slug',         // Đường dẫn SEO
         'description',  // Mô tả chi tiết dự án
         'images',        // Ảnh đại diện của dự án
+        'main_image',
         'list_image',   // Ảnh danh sách của dự án
         'link_demo',    // Đường dẫn demo dự án
         'github',       // Đường dẫn GitHub của dự án

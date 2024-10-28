@@ -61,7 +61,7 @@ class ProductResource extends Resource
                     Section::make('Hình ảnh mô tả sản phẩm')->schema([
                         FileUpload::make('images')
                             ->multiple()
-                            ->directory('product-description')
+                            ->directory('products/description')
                             ->label('Chọn ảnh định dạng PNG, JPG')
                             ->maxFiles(5)
                             ->reorderable()
@@ -70,9 +70,10 @@ class ProductResource extends Resource
 //                                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
 //                                    ->prepend('san-pham-'),
 //                            )
-                            ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, $set): string {
-                                // Nếu là form mới thì đặt giá trị mặc định cho slug
-                                $slug = $record->slug ?? Str::slug($set('name', 'san-pham'));
+                            ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, callable $get): string {
+                                // Lấy giá trị của `title` từ form, mặc định là 'du-an' nếu không có
+                                $title = $get('name') ?? 'san-pham';
+                                $slug = Str::slug($title);
 
                                 // Đổi tên file với tiền tố slug và chuỗi ngẫu nhiên
                                 return $slug . '-' . Str::random(5) . '.' . $file->getClientOriginalExtension();
@@ -89,6 +90,21 @@ class ProductResource extends Resource
                             })
                             ->columnSpan(2),
                     ])->columns(2),
+
+                    Section::make('SEO')->schema([
+                        Forms\Components\TextInput::make('meta_title')
+                            ->label('Tiêu Đề Meta')
+                            ->maxLength(255)
+                            ->nullable(),
+                        Forms\Components\TextInput::make('meta_description')
+                            ->label('Mô Tả Meta')
+                            ->maxLength(255)
+                            ->nullable(),
+                        Forms\Components\TextInput::make('meta_keyword')
+                            ->label('Từ Khóa Meta')
+                            ->maxLength(255)
+                            ->nullable(),
+                    ])->columns(1),
 
                 ])->columnSpan(2),
 
@@ -110,16 +126,17 @@ class ProductResource extends Resource
 
                     Section::make('Hình ảnh')->schema([
                         FileUpload::make('main_image')
-                            ->directory('product-main')
+                            ->directory('products/main')
                             ->label('Chọn ảnh định dạng PNG, JPG')
                             ->reorderable()
                             ->preserveFilenames()
-                            ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, $set): string {
-                                // Nếu là form mới thì đặt giá trị mặc định cho slug
-                                $slug = $record->slug ?? Str::slug($set('name', 'san-pham'));
+                            ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, callable $get): string {
+                                // Lấy giá trị của `title` từ form, mặc định là 'du-an' nếu không có
+                                $title = $get('name') ?? 'san-pham';
+                                $slug = Str::slug($title);
 
                                 // Đổi tên file với tiền tố slug và chuỗi ngẫu nhiên
-                                return $slug . '-main-' . Str::random(5) . '.' . $file->getClientOriginalExtension();
+                                return $slug . '-' . Str::random(5) . '.' . $file->getClientOriginalExtension();
                             })
                             //Xóa ảnh sau khi xóa sản phẩm
                             ->deleteUploadedFileUsing(function ($file) {
@@ -149,13 +166,27 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\ImageColumn::make('main_image')->label('Hình ảnh'),
+                Tables\Columns\TextColumn::make('name')->label('Têm sản phẩm'),
+                Tables\Columns\TextColumn::make('categories.name')
+                    ->sortable()
+                    ->label('Danh mục'),
+                Tables\Columns\TextColumn::make('price')
+                    ->label('Giá tiền')
+                    ->suffix('.đ')
+                    ->sortable(),
+                Tables\Columns\ToggleColumn::make('status')->label('Trạng thái'),
             ])
+            ->reorderable('order')
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('category')->label('Danh mục')
+                    ->relationship('category', 'name'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

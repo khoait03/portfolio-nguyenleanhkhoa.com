@@ -6,6 +6,7 @@ use App\Filament\Resources\Project\ProjectResource\Pages;
 use App\Models\Project;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -63,20 +64,48 @@ class ProjectResource extends Resource
 
                 ])->columns(2),
 
+//
+
+                Section::make('Hình ảnh đại diện')->schema([
+                    FileUpload::make('main_image')
+                        ->directory('projects/main')
+                        ->label('Chọn ảnh định dạng PNG, JPG')
+                        ->reorderable()
+                        ->preserveFilenames()
+                        ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, callable $get): string {
+                            // Lấy giá trị của `title` từ form, mặc định là 'du-an' nếu không có
+                            $title = $get('title') ?? 'du-an';
+                            $slug = Str::slug($title);
+
+                            // Đổi tên file với tiền tố slug và chuỗi ngẫu nhiên
+                            return $slug . '-' . Str::random(5) . '.' . $file->getClientOriginalExtension();
+                        })
+                        // Xóa ảnh sau khi xóa sản phẩm
+                        ->deleteUploadedFileUsing(function ($file) {
+                            if ($file instanceof TemporaryUploadedFile) {
+                                Storage::disk('public')->delete($file->getPathname());
+                            } elseif (is_string($file)) {
+                                Storage::disk('public')->delete($file);
+                            }
+                        }),
+                ]),
+
+
                 Section::make('Hình ảnh dự án')->schema([
                     FileUpload::make('images')
                         ->multiple()
-                        ->directory('projects')
+                        ->directory('projects/description')
                         ->label('Chọn ảnh định dạng PNG, JPG')
                         ->maxFiles(5)
                         ->reorderable()
                         ->preserveFilenames()
-                        ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, $set): string {
-                            // Nếu là form mới thì đặt giá trị mặc định cho slug
-                            $slug = $record->slug ?? Str::slug($set('name', 'san-pham'));
+                        ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, callable $get): string {
+                            // Lấy giá trị của `title` từ form, mặc định là 'du-an' nếu không có
+                            $title = $get('title') ?? 'du-an';
+                            $slug = Str::slug($title);
 
                             // Đổi tên file với tiền tố slug và chuỗi ngẫu nhiên
-                            return $slug . '-'. Str::random(5) . '.' . $file->getClientOriginalExtension();
+                            return $slug . '-' . Str::random(5) . '.' . $file->getClientOriginalExtension();
                         })
                         //Xóa ảnh sau khi xóa sản phẩm
                         ->deleteUploadedFileUsing(function ($file) {
@@ -131,18 +160,21 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('created_at')->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')->dateTime(),
+                Tables\Columns\ImageColumn::make('main_image')->label('Hình ảnh'),
+                Tables\Columns\TextColumn::make('title')
+                    ->label('Tiêu đề'),
+
+                Tables\Columns\ToggleColumn::make('status')->label('Trạng thái'),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

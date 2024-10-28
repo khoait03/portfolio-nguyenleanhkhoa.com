@@ -60,7 +60,6 @@ class SiteSettingResource extends Resource
                                     ->nullable(),
                                 FileUpload::make('logo_website')
                                     ->label('Logo Website')
-                                    ->required()
                                     ->helperText('Chọn định dạng ảnh PNG, JPG, kích thước tối đa 2MB')
                                     ->acceptedFileTypes(['image/png', 'image/jpeg'])
                                     ->maxSize(2048)
@@ -116,9 +115,7 @@ class SiteSettingResource extends Resource
 
                         Tabs\Tab::make('Liên hệ')
                             ->schema([
-                                TextInput::make('company_address')->label('Địa chỉ công ty')->nullable(),
-                                TextInput::make('tax_code')->label('Mã số thuế')->nullable(),
-                                TextInput::make('hotline')->label('Hotline')->nullable(),
+                                TextInput::make('phone')->label('Hotline')->nullable(),
                                 TextInput::make('email')->label('Email')->nullable(),
                                 TextInput::make('website')->label('Website')->nullable(),
                                 Textarea::make('map')->label('Bản đồ')->nullable(),

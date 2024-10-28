@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->integer('order')->default(1);
             $table->foreignId('category_id')
                 ->constrained('product_categories')
                 ->cascadeOnDelete();
@@ -25,6 +26,9 @@ return new class extends Migration
             $table->integer('price');
             $table->string('demo', 255)->nullable();
             $table->boolean('status')->default(false);
+            $table->string('meta_title', 255)->nullable();
+            $table->string('meta_description', 255)->nullable();
+            $table->string('meta_keyword', 255)->nullable();
             $table->timestamps();
         });
     }

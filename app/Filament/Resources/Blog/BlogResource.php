@@ -10,6 +10,9 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class BlogResource extends Resource
 {
@@ -46,8 +49,29 @@ class BlogResource extends Resource
                         ->required(),
                     Forms\Components\FileUpload::make('image')
                         ->label('Hình Ảnh Nổi Bật')
-                        ->nullable(),
-                ])->columns(1), // 1 cột cho nội dung
+                        ->nullable()
+                        ->directory('blogs')
+                        ->reorderable()
+                        ->preserveFilenames()
+                        ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, callable $get): string {
+                            // Lấy giá trị của `title` từ form, mặc định là 'du-an' nếu không có
+                            $title = $get('title') ?? 'bai-biet';
+                            $slug = Str::slug($title);
+
+                            // Đổi tên file với tiền tố slug và chuỗi ngẫu nhiên
+                            return $slug . '-' . Str::random(5) . '.' . $file->getClientOriginalExtension();
+                        })
+                        //Xóa ảnh sau khi xóa sản phẩm
+                        ->deleteUploadedFileUsing(function ($file) {
+                            if ($file instanceof TemporaryUploadedFile) {
+                                // Nếu là một TemporaryUploadedFile, lấy đường dẫn từ getPathname
+                                Storage::disk('public')->delete($file->getPathname());
+                            } elseif (is_string($file)) {
+                                // Nếu là một string, xóa trực tiếp từ đường dẫn
+                                Storage::disk('public')->delete($file);
+                            }
+                        }),
+                ])->columns(1),
 
                 Forms\Components\Section::make('SEO')->schema([
                     Forms\Components\TextInput::make('meta_title')
@@ -59,7 +83,7 @@ class BlogResource extends Resource
                     Forms\Components\TextInput::make('meta_keyword')
                         ->label('Từ Khóa Meta')
                         ->nullable(),
-                ])->columns(1), // 1 cột cho metadata
+                ])->columns(1),
             ]);
     }
 
@@ -67,6 +91,7 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('image')->label('Hình ảnh'),
                 Tables\Columns\TextColumn::make('title')->sortable()->searchable()->label('Tiêu Đề'),
                 Tables\Columns\TextColumn::make('slug')->sortable()->searchable()->label('Đường Dẫn'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->label('Ngày Tạo'),
@@ -76,8 +101,10 @@ class BlogResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()->label('Chỉnh Sửa'),
-                Tables\Actions\DeleteAction::make()->label('Xóa'),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ]);
     }
 
