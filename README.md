@@ -42,14 +42,16 @@ portfolio-nguyenleanhkhoa.com là một dự án giới thiệu cá nhân các t
 7. Chạy migration:
    ```bash
    php artisan migrate
-
-8. Run project:
+   
+8. Chạy seeder:
+   ```bash
+   php artisan db:seed
+   
+9. Run project:
    ```bash
    php artisan serve
 
-9. Chạy seeder:
-   ```bash
-   php artisan db:seed
+
 
 10. Truy cập vào địa chỉ: http://127.0.0.1:8000 để xem ứng dụng:
  
