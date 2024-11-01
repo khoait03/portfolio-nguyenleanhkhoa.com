@@ -130,28 +130,33 @@
                 <div class="innerbody">
                     <div class="innerleft">
                         <div class="leadbtnclose"> <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-                        <h3>Build Your App in just 2 Weeks</h3>
-                        <p class="mt10">Leave your details and one of our experts will contact you soon</p>
+                        <h3>Liên hệ ngay để được tư vấn</h3>
+                        <p class="mt10"></p>
                         <div class="form-block mt20">
                             <form action="#" id="quotes-form" method="post">
                                 <div class="fieldsets row">
                                     <div class="col-md-12 form-group floating-label">
                                         <input type="text" placeholder=" " required="required" class="floating-input">
-                                        <label>Full Name*</label>
+                                        <label>Họ tên*</label>
                                     </div>
                                     <div class="col-md-12 form-group floating-label">
                                         <input type="email" placeholder=" " required="required" class="floating-input">
-                                        <label>Email Address*</label>
+                                        <label>Email*</label>
                                     </div>
                                 </div>
                                 <div class="fieldsets row">
                                     <div class="col-md-12 form-group floating-label">
                                         <input type="tel" placeholder=" " required="required" class="floating-input">
-                                        <label>Mobile Number*</label>
+                                        <label>Số điện thoại*</label>
                                     </div>
                                 </div>
-                                <div class="fieldsets mt20"> <button type="submit" name="submit" class="lnk btn-main bg-btn">Submit <i class="fas fa-chevron-right fa-icon"></i><span class="circle"></span></button> </div>
-                                <p class="trm"><i class="fas fa-lock"></i>We hate spam, and we respect your privacy.</p>
+                                <div class="fieldsets mt20">
+                                    <button type="submit" name="submit" class="lnk btn-main bg-btn">
+                                        Liên hệ <i class="fas fa-chevron-right fa-icon"></i>
+                                        <span class="circle"></span>
+                                    </button>
+                                </div>
+                                <p class="trm"><i class="fas fa-lock"></i>Chúng tôi tôn trọng quyền riêng tư của bạn.</p>
                             </form>
                         </div>
                     </div>
