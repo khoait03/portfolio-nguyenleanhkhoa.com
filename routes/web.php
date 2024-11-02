@@ -14,3 +14,4 @@ Route::get('/service', [HomeController::class, 'service'])->name('service');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::get('/project', [HomeController::class, 'project'])->name('project');
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');

@@ -11,22 +11,22 @@
             <div class="custom-nav" role="navigation">
                 <ul class="nav-list">
                     <li>
-                        <a href="" class="menu-links">Trang chủ</a>
+                        <a href="{{ route('home') }}" class="menu-links">Trang chủ</a>
                     </li>
                     <li>
                         <a href="" class="menu-links">Giới thiệu</a>
                     </li>
                     <li>
-                        <a href="" class="menu-links">Dự án</a>
+                        <a href="{{ route('project') }}" class="menu-links">Dự án</a>
                     </li>
                     <li>
-                        <a href="" class="menu-links">Dịch vụ</a>
+                        <a href="{{ route('service') }}" class="menu-links">Dịch vụ</a>
                     </li>
                     <li>
-                        <a href="" class="menu-links">Liên hệ</a>
+                        <a href="{{ route('contact') }}" class="menu-links">Liên hệ</a>
                     </li>
                     <li class="sbmenu rpdropdown">
-                        <a href="" class="menu-links">Bài viết</a>
+                        <a href="{{ route('blog') }}" class="menu-links">Bài viết</a>
                         <div class="nx-dropdown menu-dorpdown">
                             <div class="sub-menu-section">
                                 <div class="sub-menu-center-block">
@@ -82,7 +82,7 @@
         <nav id="main-nav">
             <ul class="first-nav">
                 <li>
-                    <a href="">Trang chủ</a>
+                    <a href="{{ route('home') }}">Trang chủ</a>
                 </li>
             </ul>
             <ul class="first-nav">
@@ -92,22 +92,22 @@
             </ul>
             <ul class="first-nav">
                 <li>
-                    <a href="">Dự án</a>
+                    <a href="{{ route('project') }}">Dự án</a>
                 </li>
             </ul>
             <ul class="first-nav">
                 <li>
-                    <a href="">Dịch vụ</a>
+                    <a href="{{ route('service') }}">Dịch vụ</a>
                 </li>
             </ul>
             <ul class="first-nav">
                 <li>
-                    <a href="">Liên hệ</a>
+                    <a href="{{ route('contact') }}">Liên hệ</a>
                 </li>
             </ul>
             <ul class="first-nav">
                 <li>
-                    <a href="">Bài viết</a>
+                    <a href="{{ route('blog') }}">Bài viết</a>
                     <ul>
                         <li>
                             <a href="">Danh mục</a>
@@ -119,7 +119,7 @@
             </ul>
             <ul class="first-nav">
                 <li>
-                    <a href="">Khác</a>
+                    <a href="{{ route('blog') }}">Khác</a>
                     <ul>
                         <li>
                             <a href="">Danh mục</a>
