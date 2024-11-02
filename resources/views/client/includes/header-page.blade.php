@@ -2,7 +2,7 @@
 <header class="header-pr nav-bg-w main-header navfix fixed-top menu-white">
     <div class="container-fluid m-pad">
         <div class="menu-header">
-            <div class="dsk-logo"><a class="nav-brand" href="index.html">
+            <div class="dsk-logo"><a class="nav-brand" href="{{ route('home') }}">
                     <img src="{{ asset('asset/client/images/white-logo.png') }}" alt="Logo" class="mega-white-logo"/>
                     <img src="{{ asset('asset/client/images/logo.png') }}" alt="Logo" class="mega-darks-logo"/>
                 </a>
@@ -61,28 +61,17 @@
                 </ul>
                 <!-- mobile + desktop - sidebar menu- dark mode witch and button -->
                 <ul class="nav-list right-end-btn">
-                    <li class="hidemobile">
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li class="hidemobile">
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-                    <li class="hidemobile">
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </li>
-                    <li class="hidemobile">
+                    <li >
                         <a data-bs-toggle="offcanvas" href="#offcanvasExample" class="btn-round- btn-br bg-btn2">
                             <i class="fas fa-phone-alt"></i>
                         </a>
                     </li>
+                    <li >
+                        <a class="btn-round- btn-br bg-btn2">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </li>
                     <li class="hidedesktop darkmodeswitch"><div class="switch-wrapper"> <label class="switch" for="niwax"> <input type="checkbox" id="niwax"/>  <span class="slider round"></span> </label> </div> </li>
-                    <li class="hidedesktop"><a data-bs-toggle="offcanvas" href="#offcanvasExample" class="btn-round- btn-br bg-btn2"><i class="fas fa-phone-alt"></i></a></li>
                     <li class="navm- hidedesktop"> <a class="toggle" href="#"><span></span></a></li>
                 </ul>
             </div>
@@ -92,130 +81,62 @@
         <nav id="main-nav">
             <ul class="first-nav">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="">Trang chủ</a>
+                </li>
+            </ul>
+            <ul class="first-nav">
+                <li>
+                    <a href="">Giới thiệu</a>
+                </li>
+            </ul>
+            <ul class="first-nav">
+                <li>
+                    <a href="">Dự án</a>
+                </li>
+            </ul>
+            <ul class="first-nav">
+                <li>
+                    <a href="">Dịch vụ</a>
+                </li>
+            </ul>
+            <ul class="first-nav">
+                <li>
+                    <a href="">Liên hệ</a>
+                </li>
+            </ul>
+            <ul class="first-nav">
+                <li>
+                    <a href="">Bài viết</a>
                     <ul>
                         <li>
-                            <a href="#">Multi-Page Demo</a>
-                            <ul>
-                                <li><a href="digital-agency.html">Digital Agency</a></li>
-                                <li><a href="digital-agency-v2.html">Digital Agency V2</a></li>
-                                <li><a href="digital-agency-glassmorphism.html">Digital Agency V3</a></li>
-                                <li><a href="web-design-agency.html">Web Design Agency</a></li>
-                                <li><a href="digital-marketing.html">Digital Marketing</a></li>
-                                <li><a href="lead-generation.html">Lead Generation Agency</a></li>
-                                <li><a href="landing-page-1.html">Landing Page V1</a></li>
-                                <li><a href="landing-page-2.html">Landing Page V2</a></li>
-                                <li><a href="freelance-portfolio.html">Freelance Portfolio</a></li>
-                                <li><a href="app-development.html">App Development Agency</a></li>
-                                <li><a href="minimal-portfolio.html">Minimal Portfolio</a></li>
-                                <li><a href="creative-agency.html">Creative Agency</a></li>
-                                <li><a href="branding-agency.html">Branding  Agency</a></li>
-                                <li><a href="modern-agency.html">Modern Agency</a></li>
-                                <li><a href="business-and-startup.html">Business & Startup</a></li>
-                                <li><a href="graphic-studio.html">Graphic Studio</a></li>
-                            </ul>
+                            <a href="">Danh mục</a>
+
                         </li>
-                        <li>
-                            <a href="#">One-Page Demo</a>
-                            <ul>
-                                <li><a href="digital-agency-onepage.html">Digital Agency</a></li>
-                                <li><a href="digital-agency-dark-onepage.html">Digital Agency Dark</a></li>
-                                <li><a href="web-design-agency-onepage.html">Web Design Agency</a></li>
-                                <li><a href="web-design-agency-dark-onepage.html">Web Design Agency Dark</a></li>
-                                <li><a href="digital-marketing-onepage.html">Digital Marketing</a></li>
-                                <li><a href="digital-marketing-dark-onepage.html">Digital Marketing Dark</a></li>
-                                <li><a href="lead-generation-onepage.html">Lead Generation Agency</a></li>
-                                <li><a href="lead-generation-dark-onepage.html">Lead Generation Agency Dark</a></li>
-                                <li><a href="freelance-portfolio-onepage.html">Freelance Portfolio</a></li>
-                                <li><a href="freelance-portfolio-dark-onepage.html">Freelance Portfolio Dark</a></li>
-                                <li><a href="app-development-onepage.html">App Development Agency</a></li>
-                                <li><a href="minimal-portfolio-onepage.html">Minimal Portfolio</a></li>
-                                <li><a href="creative-agency-onepage.html">Creative Agency</a></li>
-                                <li><a href="branding-agency-onepage.html">Branding  Agency</a></li>
-                                <li><a href="modern-agency-onepage.html">Modern Agency</a></li>
-                                <li><a href="business-and-startup-onepage.html">Business & Startup</a></li>
-                                <li><a href="graphic-studio-onepage.html">Graphic Studio</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Pages</a>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="why-us.html">Why Us</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="team-details.html">Team Single</a></li>
-                        <li><a href="case-study.html">Case Study</a></li>
-                        <li><a href="case-study-details.html">Case Study Single</a></li>
-                        <li><a href="mission-vision.html">Mission & Vision</a></li>
-                        <li><a href="development-process.html">Development Process</a></li>
-                        <li><a href="client-reviews.html">Client Reviews</a> </li>
-                        <li><a href="clients.html">Our Clients</a></li>
-                        <li><a href="get-quote.html">Contact Us</a> </li>
-                        <li><a href="get-quote-2.html">Contact Us 2</a> </li>
-                        <li><a href="login.html">Login Page</a> </li>
-                        <li><a href="service-card.html">Service Card</a> </li>
-                        <li><a href="service-web.html">Service Web</a></li>
-                        <li><a href="service-app.html">Service Mobile App</a></li>
-                        <li><a href="service-marketing.html">Service Digital Marketing</a></li>
-                        <li><a href="service-graphic.html">Service Graphic</a></li>
-                        <li><a href="career.html">Careers</a> </li>
-                        <li><a href="shop-page.html">Shop Single</a> </li>
-                        <li><a href="shop-details.html">Shop Details</a> </li>
-                        <li><a href="shop-cart.html">Shop Cart</a> </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Shortcodes</a>
-                    <ul>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="typography.html">Typography</a></li>
-                        <li><a href="button.html">Buttons</a></li>
-                        <li><a href="locations.html">Office Location</a></li>
-                        <li><a href="faq.html">FAQs</a>	</li>
-                        <li><a href="tabs.html">Tabs</a></li>
-                        <li><a href="error.html">404 Page</a></li>
-                        <li><a href="gradients.html">Background Gradients</a></li>
-                        <li><a href="header-v1.html">Header v1</a></li>
-                        <li><a href="header-v2.html">Header v2</a></li>
-                        <li><a href="header-v3.html">Header v3</a></li>
-                        <li><a href="footer-design.html">Footer</a></li>
-                        <li><a href="hover-animation.html">Hover Animation</a></li>
-                        <li><a href="popup-modal.html">Popup Modal</a></li>
-                        <li><a href="lists.html">Lists</a></li>
-                        <li><a href="bootstrap-components.html">Bootstrap Components</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                    <ul>
-                        <li><a href="portfolio.html">Portfolio Grid 1</a> </li>
-                        <li><a href="portfolio-2.html">Portfolio Grid 2</a> </li>
-                        <li><a href="portfolio-block.html">Portfolio Wide Block</a> </li>
-                        <li><a href="portfolio-block-2.html">Portfolio Wide Block v2</a> </li>
-                        <li><a href="portfolio-details.html">Portfolio Details</a> </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Blog</a>
-                    <ul>
-                        <li><a href="blog-grid-1.html">Blog Grid 1</a> </li>
-                        <li><a href="blog-grid-2.html">Blog Grid 2</a> </li>
-                        <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a> </li>
-                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a> </li>
-                        <li><a href="blog-single.html">Blog Single</a></li>
+
                     </ul>
                 </li>
             </ul>
+            <ul class="first-nav">
+                <li>
+                    <a href="">Khác</a>
+                    <ul>
+                        <li>
+                            <a href="">Danh mục</a>
+
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
             <ul class="bottom-nav">
                 <li class="prb">
                     <a href="tel:+11111111111">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384">
                             <path d="M353.188,252.052c-23.51,0-46.594-3.677-68.469-10.906c-10.719-3.656-23.896-0.302-30.438,6.417l-43.177,32.594
-								  c-50.073-26.729-80.917-57.563-107.281-107.26l31.635-42.052c8.219-8.208,11.167-20.198,7.635-31.448
-								  c-7.26-21.99-10.948-45.063-10.948-68.583C132.146,13.823,118.323,0,101.333,0H30.813C13.823,0,0,13.823,0,30.813
-								  C0,225.563,158.438,384,353.188,384c16.99,0,30.813-13.823,30.813-30.813v-70.323C384,265.875,370.177,252.052,353.188,252.052z"
+                              c-50.073-26.729-80.917-57.563-107.281-107.26l31.635-42.052c8.219-8.208,11.167-20.198,7.635-31.448
+                              c-7.26-21.99-10.948-45.063-10.948-68.583C132.146,13.823,118.323,0,101.333,0H30.813C13.823,0,0,13.823,0,30.813
+                              C0,225.563,158.438,384,353.188,384c16.99,0,30.813-13.823,30.813-30.813v-70.323C384,265.875,370.177,252.052,353.188,252.052z"
                             />
                         </svg>
                     </a>

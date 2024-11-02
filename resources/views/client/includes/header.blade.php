@@ -3,7 +3,7 @@
     <div class="container-fluid m-pad">
         <div class="menu-header">
             <div class="dsk-logo">
-                <a class="nav-brand" href="">
+                <a class="nav-brand" href="{{ route('home') }}">
                     <img src="{{ asset('asset/client/images/white-logo.png') }}" alt="Logo" class="mega-white-logo"/>
                     <img src="{{ asset('asset/client/images/logo.png') }}" alt="Logo" class="mega-darks-logo"/>
                 </a>
@@ -62,28 +62,17 @@
                 </ul>
                 <!-- mobile + desktop - sidebar menu- dark mode witch and button -->
                 <ul class="nav-list right-end-btn">
-                    <li class="hidemobile">
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li class="hidemobile">
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-                    <li class="hidemobile">
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </li>
-                    <li class="hidemobile">
+                    <li >
                         <a data-bs-toggle="offcanvas" href="#offcanvasExample" class="btn-round- btn-br bg-btn2">
                             <i class="fas fa-phone-alt"></i>
                         </a>
                     </li>
+                    <li >
+                        <a class="btn-round- btn-br bg-btn2">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </li>
                     <li class="hidedesktop darkmodeswitch"><div class="switch-wrapper"> <label class="switch" for="niwax"> <input type="checkbox" id="niwax"/>  <span class="slider round"></span> </label> </div> </li>
-                    <li class="hidedesktop"><a data-bs-toggle="offcanvas" href="#offcanvasExample" class="btn-round- btn-br bg-btn2"><i class="fas fa-phone-alt"></i></a></li>
                     <li class="navm- hidedesktop"> <a class="toggle" href="#"><span></span></a></li>
                 </ul>
             </div>
