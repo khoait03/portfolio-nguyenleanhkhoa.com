@@ -14,6 +14,9 @@
                         <a href="{{ route('home') }}" class="menu-links">Trang chủ</a>
                     </li>
                     <li>
+                        <a href="{{ route('product.index') }}" class="menu-links">Sản phẩm</a>
+                    </li>
+                    <li>
                         <a href="" class="menu-links">Giới thiệu</a>
                     </li>
                     <li>
@@ -83,6 +86,11 @@
             <ul class="first-nav">
                 <li>
                     <a href="{{ route('home') }}">Trang chủ</a>
+                </li>
+            </ul>
+            <ul class="first-nav">
+                <li>
+                    <a href="{{ route('product.index') }}">Sản phẩm</a>
                 </li>
             </ul>
             <ul class="first-nav">
