@@ -12,4 +12,19 @@ class HomeController extends Controller
     {
         return view('client.home');
     }
+
+    public function project(): View
+    {
+        return view('client.pages.project');
+    }
+
+    public function service(): View
+    {
+        return view('client.pages.service');
+    }
+
+    public function contact(): View
+    {
+        return view('client.pages.contact');
+    }
 }

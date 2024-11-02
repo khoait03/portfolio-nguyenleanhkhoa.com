@@ -122,47 +122,4 @@
 </footer>
 <!--End Footer-->
 
-<!-- lead generaton popup start -->
-<div class="modal leadpopup" id="leadModal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="innerbody">
-                    <div class="innerleft">
-                        <div class="leadbtnclose"> <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-                        <h3>Liên hệ ngay để được tư vấn</h3>
-                        <p class="mt10"></p>
-                        <div class="form-block mt20">
-                            <form action="#" id="quotes-form" method="post">
-                                <div class="fieldsets row">
-                                    <div class="col-md-12 form-group floating-label">
-                                        <input type="text" placeholder=" " required="required" class="floating-input">
-                                        <label>Họ tên*</label>
-                                    </div>
-                                    <div class="col-md-12 form-group floating-label">
-                                        <input type="email" placeholder=" " required="required" class="floating-input">
-                                        <label>Email*</label>
-                                    </div>
-                                </div>
-                                <div class="fieldsets row">
-                                    <div class="col-md-12 form-group floating-label">
-                                        <input type="tel" placeholder=" " required="required" class="floating-input">
-                                        <label>Số điện thoại*</label>
-                                    </div>
-                                </div>
-                                <div class="fieldsets mt20">
-                                    <button type="submit" name="submit" class="lnk btn-main bg-btn">
-                                        Liên hệ <i class="fas fa-chevron-right fa-icon"></i>
-                                        <span class="circle"></span>
-                                    </button>
-                                </div>
-                                <p class="trm"><i class="fas fa-lock"></i>Chúng tôi tôn trọng quyền riêng tư của bạn.</p>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="innerright" data-background="{{ asset('asset/client/images/service/mockup-app.jpg') }}"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+

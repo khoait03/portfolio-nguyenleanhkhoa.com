@@ -11,16 +11,22 @@
 <!-- top progress bar end -->
 
 <!--Start Preloader -->
-<div class="onloadpage" id="page_loader">
-    <div class="pre-content">
-        <div class="logo-pre"><img src="{{ asset('asset/client/images/logo.png') }}" alt="Logo" class="img-fluid" /></div>
-        <div class="pre-text- text-radius text-light text-animation bg-b">Niwax - Creative Agency & Portfolio HTML Template Are 2 Seconds Away. Have Patience</div>
-    </div>
-</div>
+{{--<div class="onloadpage" id="page_loader">--}}
+{{--    <div class="pre-content">--}}
+{{--        <div class="logo-pre"><img src="{{ asset('asset/client/images/logo.png') }}" alt="Logo" class="img-fluid" /></div>--}}
+{{--        <div class="pre-text- text-radius text-light text-animation bg-b">Niwax - Creative Agency & Portfolio HTML Template Are 2 Seconds Away. Have Patience</div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 <!--End Preloader -->
 
 <!-- header -->
-@include('client.includes.header')
+@hasSection('header')
+    @yield('header')
+@else
+    <!-- header -->
+    @include('client.includes.header')
+    <!-- end header -->
+@endif
 <!-- end header -->
 
 <!--Start sidebar phone -->
