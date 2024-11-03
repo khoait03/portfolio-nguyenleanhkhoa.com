@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('customer_phone', 10)->nullable();
             $table->string('customer_email', 60)->nullable();
             $table->text('description')->nullable();
+            $table->date('register_date')->comment('Ngày hết hạn');
             $table->date('expiry_date')->comment('Ngày hết hạn');
             $table->boolean('is_active')
                 ->default(true)

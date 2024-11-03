@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LicenseCategory extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+    ];
 }
