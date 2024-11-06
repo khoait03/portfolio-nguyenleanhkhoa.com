@@ -46,9 +46,13 @@
             <div class="row mt60">
                 @if(is_object($projects))
                     @foreach($projects as $project)
+                        @php
+                            // Xác định lớp gradient động dựa trên index của mỗi project
+                            $gradientClass = 'bg-gradient' . (2 + ($loop->index % 7));
+                        @endphp
 
                     <div class="col-lg-12 col-sm-12 wptbb">
-                        <div class="pbwide shadow bg-gradient2">
+                        <div class="pbwide shadow {{ $gradientClass }}">
                             <div class="portfolio-item-info-tt">
 
                                 <h3 class="mb30">{{ limit_text($project->title, 80) }}</h3>
