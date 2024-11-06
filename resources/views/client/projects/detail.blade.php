@@ -52,18 +52,20 @@
 
                     <div class="rpb-item-infodv">
                         <ul>
-                            <li>
-                                <strong>Danh mục</strong>
-                                <div class="nx-rt">
-                                    @foreach($project->categories as $index => $category)
-                                        {{ $category->name }}
-                                        @if (!$loop->last)
-                                        ,
-                                        @endif
-                                    @endforeach
-                                </div>
+                            @if(isset($project->categories) && $project->categories->isNotEmpty())
+                                <li>
+                                    <strong>Danh mục</strong>
+                                    <div class="nx-rt">
+                                        @foreach($project->categories as $index => $category)
+                                            {{ $category->name }}
+                                            @if (!$loop->last)
+                                            ,
+                                            @endif
+                                        @endforeach
+                                    </div>
 
-                            </li>
+                                </li>
+                            @endif
 
                             @if(isset($project->execution_time))
                                 <li>
@@ -120,6 +122,11 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" id="tab2a" data-bs-toggle="tab" href="#tab2" role="tab" aria-controls="tab12" aria-selected="false">
+                                        Công nghệ
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" id="tab5b" data-bs-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false">
                                         Hình ảnh
                                     </a>
@@ -133,6 +140,16 @@
                                 <div class="mt20 tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1a">
                                     <h4 class="mb10">Mô tả dự án</h4>
                                     {!! $project->description !!}
+                                </div>
+
+                                <div class="mt20 tab-pane fade show active" id="tab2" role="tabpanel" aria-labelledby="tab2a">
+                                    <h4 class="mb10">Công nghệ sử dụng</h4>
+                                    <div class="widebloktag mt30 mb30">
+                                        @foreach ($project->technology as $technology)
+                                            <span class="bg-btn3">{{ $technology }}</span>
+                                        @endforeach
+
+                                    </div>
                                 </div>
 
                                 <!-- Hình ảnh demo -->

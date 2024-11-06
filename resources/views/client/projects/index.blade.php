@@ -55,7 +55,7 @@
 
                                 <div class="widebloktag mt30 mb30">
                                     @foreach ($project->technology as $technology)
-                                        <span class="bg-btn2">{{ $technology }}</span>
+                                        <span class="bg-btn3">{{ $technology }}</span>
                                     @endforeach
 
                                 </div>
