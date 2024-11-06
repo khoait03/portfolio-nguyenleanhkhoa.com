@@ -51,8 +51,6 @@ portfolio-nguyenleanhkhoa.com là một dự án giới thiệu cá nhân các t
    ```bash
    php artisan serve
 
-
-
 10. Truy cập vào địa chỉ: http://127.0.0.1:8000 để xem ứng dụng:
  
     

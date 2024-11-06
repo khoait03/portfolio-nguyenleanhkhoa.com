@@ -29,7 +29,11 @@ class ImageResource extends Resource
     protected static ?string $model = Image::class;
 
     protected static ?string $slug = 'images';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $modelLabel = 'Hình ảnh';
+    protected static ?string $navigationLabel = 'Hình ảnh';
+    protected static ?string $navigationGroup = 'Hình ảnh';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     public static function form(Form $form): Form
     {
@@ -116,12 +120,28 @@ class ImageResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('id')
+                    ->label('#ID')
+                    ->sortable()
+                    ->searchable(),
+
+                // Cột hiển thị product_name
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('Ảnh bìa')
+                    ->sortable()
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Tên hình ảnh')
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -9,6 +9,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
@@ -60,6 +61,11 @@ class ProductCategoryResource extends Resource
                         ])->columnSpan(2),
 
                         Grid::make(1)->schema([
+                            Section::make('Trạng thái hiển thị')
+                                ->schema([
+                                    Toggle::make('status')
+                                        ->label('Hiển thị'),
+                                ]),
                             Section::make()
                                 ->schema([
                                     Placeholder::make('created_at')
@@ -69,7 +75,8 @@ class ProductCategoryResource extends Resource
                                     Placeholder::make('updated_at')
                                         ->label('Thời gian cập nhật mới nhất')
                                         ->content(fn ($record) => $record ? $record->updated_at->format('d/m/Y H:i:s') : '-'),
-                                ])
+                                ]),
+
                         ])->columnSpan(1),
                     ]),
             ]);
@@ -81,15 +88,16 @@ class ProductCategoryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('slug')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('created_at')->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')->dateTime(),
+                Tables\Columns\ToggleColumn::make('status')->label('Trạng thái'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ]);
     }
 

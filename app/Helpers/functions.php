@@ -24,8 +24,20 @@ if (!function_exists('get_image_url')) {
 
 // Giới hạn chữ mô tả bài viết, sản phẩm
 if (!function_exists('limit_text')) {
-    function limit_text($text, $limit = 130, $end = '...'): string
+    function limit_text($text, $limit = 130, $end = ' ...'): string
     {
-        return Str::limit(strip_tags($text), $limit, $end);
+        // Loại bỏ thẻ HTML và thay thế &nbsp; bằng khoảng trắng
+        $text = str_replace('&nbsp;', ' ', strip_tags($text));
+        $text = str_replace('&amp;', '&', strip_tags($text));
+
+        return Str::limit($text, $limit, $end);
+    }
+}
+
+// Định dạng giá tiền Việt Nam
+if (!function_exists('format_price_vnd')) {
+    function format_price_vnd($price, $after_price= 'đ'): string
+    {
+        return number_format($price, 0, ',', '.').$after_price;
     }
 }

@@ -52,6 +52,12 @@ class ProductResource extends Resource
                             ->maxLength(200)
                             ->label('Slug (Đường dẫn)'),
 
+                        TextInput::make('demo')
+                            ->required()
+                            ->maxLength(200)
+                            ->label('Link Demo')
+                            ->columnSpanFull(),
+
                         RichEditor::make('description')
                             ->required()
                             ->columnSpanFull(),
