@@ -50,10 +50,6 @@
                     <div class="col-lg-12 col-sm-12 wptbb">
                         <div class="pbwide shadow bg-gradient2">
                             <div class="portfolio-item-info-tt">
-{{--                                <div class="logowide mb20">--}}
-{{--                                    <img src="{{ get_image_url($project->main_image) }}" alt="logo" class="img-fluid">--}}
-{{--                                </div>--}}
-
 
                                 <h3 class="mb30">{{ limit_text($project->title, 80) }}</h3>
 
@@ -70,7 +66,7 @@
                                     @endforeach
                                 </ul>
 
-                                <a target="_blank" href="{{ $project->link_demo }}" class="btn-outline lnk mt30">
+                                <a target="_blank" href="{{ route('project.detail', $project->slug) }}" class="btn-outline lnk mt30">
                                     Chi tiết
                                     <i class="fas fa-eye fa-icon"></i>
                                     <span class="circle"></span>

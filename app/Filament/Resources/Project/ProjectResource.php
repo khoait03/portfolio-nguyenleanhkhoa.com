@@ -107,6 +107,16 @@ class ProjectResource extends Resource
                         ->required()
                         ->columnSpanFull(),
 
+                    Forms\Components\TextInput::make('customer')
+                        ->maxLength(100)
+                        ->placeholder('Cty TNHH xyz')
+                        ->label('Khách hàng'),
+
+                    Forms\Components\TextInput::make('execution_time')
+                        ->maxLength(30)
+                        ->placeholder('5 - 10/2024')
+                        ->label('Thời gian thực hiện'),
+
                     RichEditor::make('description')
                         ->nullable()
                         ->label('Mô tả')

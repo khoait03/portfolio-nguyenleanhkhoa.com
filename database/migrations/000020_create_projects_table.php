@@ -23,6 +23,9 @@ return new class extends Migration
             $table->json('role')->nullable()
                 ->comment('Vai trò trong dự án');
 
+            $table->string('customer', 100)->nullable();
+            $table->string('execution_time', 30)->nullable();
+
             $table->string('link_demo', 255)->nullable();
             $table->string('github', 255)->nullable();
             $table->boolean('status')->default(0);

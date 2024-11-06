@@ -16,6 +16,8 @@ class Project extends Model
         'main_image',
         'technology', // Công nghệ sử dụng
         'role', // Vài trò trong dự án
+        'execution_time', //Thời gian thực hiện
+        'customer', //Khách hàng
         'list_image',   // Ảnh danh sách của dự án
         'link_demo',    // Đường dẫn demo dự án
         'github',       // Đường dẫn GitHub của dự án
