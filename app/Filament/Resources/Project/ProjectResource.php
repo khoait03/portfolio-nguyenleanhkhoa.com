@@ -9,6 +9,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -55,6 +56,55 @@ class ProjectResource extends Resource
                         ->multiple() // Cho phép chọn nhiều danh mục
                         ->label('Danh mục')
                         ->preload()
+                        ->columnSpanFull(),
+
+                    Select::make('technology')
+                        ->label('Công nghệ sử dụng')
+                        ->options([
+                            'HTML' => 'HTML',
+                            'CSS' => 'CSS',
+                            'JavaScript' => 'JavaScript',
+                            'PHP' => 'PHP',
+                            'Laravel' => 'Laravel',
+                            'VueJS' => 'VueJS',
+                            'React' => 'React',
+                        ])
+                        ->maxItems(4)
+                        ->multiple()
+                        ->default(fn ($record) => $record ? $record->technology : [])
+                        ->searchable()
+                        ->placeholder('Chọn công nghệ')
+                        ->required()
+                        ->columnSpanFull(),
+
+                    Select::make('role')
+                        ->label('Vai trò trong dự án (tối đa 4)')
+                        ->options([
+                            'Thiết kế UI/UX' => 'Thiết kế UI/UX',
+                            'Thiết kế hệ thống' => 'Thiết kế hệ thống',
+                            'Thiết kế thương hiệu' => 'Thiết kế thương hiệu',
+                            'Lập trình viên Frontend' => 'Lập trình viên Frontend',
+                            'Lập trình viên Backend' => 'Lập trình viên Backend',
+                            'Lập trình viên Full Stack' => 'Lập trình viên Full Stack',
+                            'Chuyên viên QA' => 'Chuyên viên QA',
+                            'Quản lý dự án' => 'Quản lý dự án',
+                            'Chuyên viên DevOps' => 'Chuyên viên DevOps',
+                            'Chuyên viên bảo mật' => 'Chuyên viên bảo mật',
+                            'Chuyên gia cơ sở dữ liệu' => 'Chuyên gia cơ sở dữ liệu',
+                            'Chuyên viên phân tích dữ liệu' => 'Chuyên viên phân tích dữ liệu',
+                            'Chuyên gia mạng' => 'Chuyên gia mạng',
+                            'Quản trị hệ thống' => 'Quản trị hệ thống',
+                            'Chuyên viên hỗ trợ kỹ thuật' => 'Chuyên viên hỗ trợ kỹ thuật',
+                            'Chuyên gia AI/ML' => 'Chuyên gia AI/ML',
+                            'Chuyên gia blockchain' => 'Chuyên gia blockchain',
+                            'Chuyên viên Cloud' => 'Chuyên viên Cloud',
+                        ])
+                        ->maxItems(4)
+                        ->multiple()
+                        ->default(fn ($record) => $record ? $record->technology : [])
+                        ->searchable()
+                        ->placeholder('Chọn vai trò')
+                        ->required()
                         ->columnSpanFull(),
 
                     RichEditor::make('description')

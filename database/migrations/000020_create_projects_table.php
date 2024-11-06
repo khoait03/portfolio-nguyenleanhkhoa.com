@@ -19,6 +19,10 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('main_image', 255)->nullable();
             $table->json('images')->nullable();
+            $table->json('technology')->nullable();
+            $table->json('role')->nullable()
+                ->comment('Vai trò trong dự án');
+
             $table->string('link_demo', 255)->nullable();
             $table->string('github', 255)->nullable();
             $table->boolean('status')->default(0);

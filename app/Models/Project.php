@@ -14,6 +14,8 @@ class Project extends Model
         'description',  // Mô tả chi tiết dự án
         'images',        // Ảnh đại diện của dự án
         'main_image',
+        'technology', // Công nghệ sử dụng
+        'role', // Vài trò trong dự án
         'list_image',   // Ảnh danh sách của dự án
         'link_demo',    // Đường dẫn demo dự án
         'github',       // Đường dẫn GitHub của dự án
@@ -26,6 +28,19 @@ class Project extends Model
     protected $casts = [
         'images' => 'array',
     ];
+
+
+    // Hàm sử dụng để hiển thị kiểu json technology ProjectResource
+    public function getTechnologyAttribute($value)
+    {
+        return is_array($value) ? $value : json_decode($value, true);
+    }
+
+    // Hàm sử dụng để hiển thị kiểu json role ProjectResource
+    public function getRoleAttribute($value)
+    {
+        return is_array($value) ? $value : json_decode($value, true);
+    }
 
 
     public function categories(): BelongsToMany
