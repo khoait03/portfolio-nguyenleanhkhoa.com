@@ -74,23 +74,26 @@
             <div class="row">
                 @foreach($products as $value)
                 <div class="col-lg-4 col-md-6">
-                    <div class="rpb-shop-items-dv s-block mt60" style="overflow: hidden;">
+                    <div class="rpb-shop-items-dv s-block mt60">
                         <div class="rpb-shop-items-img" >
-                            <a href="">
-                                <img src="{{ get_image_url($value->main_image, 'default/blog.jpg') }}"
+                            <a href="{{ route('product.detail', $value->slug) }}">
+                                <img src="{{ get_image_url($value->main_image) }}"
                                      class="img-fluid" alt="product">
                             </a>
                         </div>
                         <div class="rpb-shop-items-info">
                             <div class="rpb-shop-items-tittl">
-                                <h3><a href="">{{ limit_text($value->name, 30) }}</a></h3>
+                                <h3>
+                                    <a href="{{ route('product.detail', $value->slug) }}">
+                                        {{ limit_text($value->name, 30) }}
+                                    </a>
+                                </h3>
                                 <p class="tags-itmm">{{ limit_text($value->description, 80) }}</p>
                             </div>
                             <div class="rpb-shop-items-flex">
                                 <div class="rpb-shop-inf-ll">
                                     <div class="rpb-itm-pric">
                                         <span class="offer-prz">{{ format_price_vnd($value->price) }} </span>
-{{--                                        <span class="regular-prz">{{ format_price_vnd($value->price) }}</span>--}}
                                     </div>
                                     <div class="rpb-tim-rate">
                                         <div class="star-rate">
@@ -113,7 +116,6 @@
                                         <a href="" class="rpb-shop-prev" data-bs-toggle="tooltip" title="View the Item Demo">
                                             Mua ngay
                                         </a>
-{{--                                        <a href="#" class="rpb-shop-cartt" data-bs-toggle="tooltip" title="Add to Cart"><i class="fas fa-shopping-cart"></i></a>--}}
                                     </div>
                                 </div>
 

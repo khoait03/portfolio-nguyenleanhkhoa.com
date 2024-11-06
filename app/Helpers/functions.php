@@ -5,7 +5,7 @@ use Illuminate\Support\Str;
 
 // Kiểm tra ảnh có tồn tại trong hệ thống không
 if (!function_exists('get_image_url')) {
-    function get_image_url ($path, $default)
+    function get_image_url ($path, $default= 'default/blog.jpg')
     {
         // Kiểm tra nếu $path là URL
         if (filter_var($path, FILTER_VALIDATE_URL)) {

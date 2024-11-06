@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
@@ -34,6 +35,29 @@ class ProductController extends Controller
         ];
 
         return view('client.products.index', $data);
+    }
+
+    public function detail($slug) : View
+    {
+        //Danh sách sản phẩm
+        $product = Product::where('slug', $slug)->where('status', 1)->first();
+
+        if(!$product) {
+            abort(404);
+        }
+
+        //Sp tương tự
+        $product_similars = Product::where('category_id', $product->category_id)
+                                ->where('status', 1)
+                                ->where('id', '!=', $product->id)
+                                ->get();
+
+        $data = [
+            'product' => $product,
+            'product_similars' => $product_similars
+        ];
+
+        return view('client.products.detail', $data);
     }
 
 

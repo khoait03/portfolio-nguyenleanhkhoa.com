@@ -13,10 +13,6 @@ class HomeController extends Controller
         return view('client.home');
     }
 
-    public function project(): View
-    {
-        return view('client.pages.project');
-    }
 
     public function service(): View
     {
