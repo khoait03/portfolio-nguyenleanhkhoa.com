@@ -4,9 +4,14 @@ namespace App\Filament\Resources\Blog;
 
 use App\Filament\Resources\Blog\BlogResource\Pages;
 use App\Models\Blog;
+use App\Models\Project;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -30,9 +35,16 @@ class BlogResource extends Resource
                 Forms\Components\Section::make('Tiêu đề')->schema([
                     Forms\Components\TextInput::make('title')
                         ->label('Tiêu Đề')
+                        ->maxLength(255)
+                        ->live(onBlur: true)
+                        ->afterStateUpdated(fn(string $operation, $state, Set $set) => $operation
+                        === 'create' ? $set('slug', Str::slug($state)) : null)
                         ->required(),
                     Forms\Components\TextInput::make('slug')
                         ->label('Đường Dẫn')
+                        ->maxLength(255)
+                        ->dehydrated()
+                        ->unique(Blog::class, 'slug', ignoreRecord: true)
                         ->required()
                         ->unique(Blog::class, 'slug', ignorable: fn ($record) => $record),
 
@@ -41,36 +53,65 @@ class BlogResource extends Resource
                         ->multiple() // Cho phép chọn nhiều danh mục
                         ->label('Danh mục')
                         ->preload()->columnSpanFull(),
+
+
+
+                    Fieldset::make()
+                        ->schema([
+                            Forms\Components\DatePicker::make('date_publish')
+                                ->default(now())
+                                ->label('Ngày công khai')
+                                ->columnSpanFull(),
+                            Forms\Components\TextInput::make('view')
+                                ->integer()
+                                ->label('Lượt xem')
+                                ->columnSpanFull(),
+                            Toggle::make('status')
+                                ->default(false)
+                                ->label('Hiển thị')
+                                ->columnSpanFull(),
+                        ])
+                        ->label('Trạng thái công khai')
+                    ->columnSpan(1),
+
+                    Fieldset::make()
+                        ->schema([
+
+                            FileUpload::make('image')
+                                ->label('Chọn ảnh có định dạng PNG, JPG, SVG')
+                                ->nullable()
+                                ->directory('blogs')
+                                ->reorderable()
+                                ->preserveFilenames()
+                                ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, callable $get): string {
+                                    // Lấy giá trị của `title` từ form, mặc định là 'du-an' nếu không có
+                                    $title = $get('title') ?? 'bai-biet';
+                                    $slug = Str::slug($title);
+
+                                    // Đổi tên file với tiền tố slug và chuỗi ngẫu nhiên
+                                    return $slug . '-' . Str::random(5) . '.' . $file->getClientOriginalExtension();
+                                })
+                                //Xóa ảnh sau khi xóa sản phẩm
+                                ->deleteUploadedFileUsing(function ($file) {
+                                    if ($file instanceof TemporaryUploadedFile) {
+                                        // Nếu là một TemporaryUploadedFile, lấy đường dẫn từ getPathname
+                                        Storage::disk('public')->delete($file->getPathname());
+                                    } elseif (is_string($file)) {
+                                        // Nếu là một string, xóa trực tiếp từ đường dẫn
+                                        Storage::disk('public')->delete($file);
+                                    }
+                                })->columnSpanFull(),
+                        ])
+                        ->label('Hình ảnh')
+                        ->columnSpan(1),
+
+
                 ])->columns(2), // Chia 2 cột
 
                 Forms\Components\Section::make('Nội dung')->schema([
                     RichEditor::make('content')
                         ->label('Nội Dung')
                         ->required(),
-                    Forms\Components\FileUpload::make('image')
-                        ->label('Hình Ảnh Nổi Bật')
-                        ->nullable()
-                        ->directory('blogs')
-                        ->reorderable()
-                        ->preserveFilenames()
-                        ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, $record, callable $get): string {
-                            // Lấy giá trị của `title` từ form, mặc định là 'du-an' nếu không có
-                            $title = $get('title') ?? 'bai-biet';
-                            $slug = Str::slug($title);
-
-                            // Đổi tên file với tiền tố slug và chuỗi ngẫu nhiên
-                            return $slug . '-' . Str::random(5) . '.' . $file->getClientOriginalExtension();
-                        })
-                        //Xóa ảnh sau khi xóa sản phẩm
-                        ->deleteUploadedFileUsing(function ($file) {
-                            if ($file instanceof TemporaryUploadedFile) {
-                                // Nếu là một TemporaryUploadedFile, lấy đường dẫn từ getPathname
-                                Storage::disk('public')->delete($file->getPathname());
-                            } elseif (is_string($file)) {
-                                // Nếu là một string, xóa trực tiếp từ đường dẫn
-                                Storage::disk('public')->delete($file);
-                            }
-                        }),
                 ])->columns(1),
 
                 Forms\Components\Section::make('SEO')->schema([
@@ -91,11 +132,13 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')->label('#'),
                 Tables\Columns\ImageColumn::make('image')->label('Hình ảnh'),
-                Tables\Columns\TextColumn::make('title')->sortable()->searchable()->label('Tiêu Đề'),
-                Tables\Columns\TextColumn::make('slug')->sortable()->searchable()->label('Đường Dẫn'),
-                Tables\Columns\TextColumn::make('created_at')->dateTime()->label('Ngày Tạo'),
-                Tables\Columns\TextColumn::make('updated_at')->dateTime()->label('Ngày Cập Nhật'),
+                Tables\Columns\TextColumn::make('title')
+                    ->sortable()->searchable()
+                    ->label('Tiêu Đề')->limit(50),
+                Tables\Columns\TextColumn::make('date_publish')->date('d-m-Y')->label('Ngày công khai'),
+                Tables\Columns\ToggleColumn::make('status')->label('Trạng thái'),
             ])
             ->filters([
                 //

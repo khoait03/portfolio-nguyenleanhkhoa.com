@@ -13,9 +13,15 @@ class Blog extends Model
         'slug',
         'content',
         'image',
+        'status',
+        'date_publish',
         'meta_title',
         'meta_description',
         'meta_keyword',
+    ];
+
+    protected $casts = [
+        'date_publish' => 'date',
     ];
 
     // Mối quan hệ với BlogCategory
