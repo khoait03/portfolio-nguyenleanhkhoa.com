@@ -140,12 +140,11 @@ class LicenseResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
-
-                Tables\Columns\TextColumn::make('id')
-                    ->label('#ID')
-                    ->sortable()
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('row_number')
+                    ->label('#')
+                    ->getStateUsing(fn($rowLoop) => $rowLoop->index + 1),
 
                 // Cột hiển thị product_name
                 Tables\Columns\TextColumn::make('product_name')

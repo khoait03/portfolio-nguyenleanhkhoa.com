@@ -105,10 +105,9 @@
                     <div class="sidebar">
                         <div class="recent-post widgets mt30">
                             <!-- Search Form -->
-                            <form action="" method="GET" class="mb-3">
-                                @csrf
+                            <form action="{{ route('blog') }}" method="GET" class="mb-3">
                                 <div class="input-group">
-                                    <input type="text" name="query" placeholder="Tìm bài viết..." class="form-control">
+                                    <input type="text" value="{{ old('search', $search) }}" name="tim-kiem" placeholder="Tìm bài viết..." class="form-control">
                                     <button style="border: none" type="submit" class="btn-round- bg-btn2">
                                         <i style="color: white" class="fas fa-search"></i>
                                     </button>
@@ -116,50 +115,66 @@
                             </form>
                         </div>
 
-                        <!--Start Recent post-->
-                        <div class="recent-post widgets mt30">
-                            <h3 class="mb30">Bài đăng gần đây</h3>
-                            <div class="media">
-                                <div class="post-image bdr-radius">
-                                    <a href="#"><img src="{{ asset('asset/client/images/blog/blog-small.jpg') }}" alt="girl" class="img-fluid"></a>
-                                </div>
-                                <div class="media-body post-info">
-                                    <h5><a href="#">Stock Market App Development - Time, Cost, Features</a></h5>
-                                    <p>September 24, 2019</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--Start Recent post-->
                         <!--Start Blog Category-->
                         <div class="recent-post widgets mt60">
                             <h3 class="mb30">Chuyên mục bài viết</h3>
                             <div class="blog-categories">
                                 <ul>
                                     <li>
-                                        <a href="#">Business <span class="categories-number">(2)</span></a>
+                                        <a href="{{  route('blog') }}">
+                                            Tất cả
+                                        </a>
                                     </li>
-                                    <li>
-                                        <a href="#">Financial <span class="categories-number">(3)</span></a>
-                                    </li>
+                                    @if(isset($categories) && is_object($categories))
+                                        @foreach($categories as $category)
+                                            <li>
+                                                <a href="{{  route('blog.category', $category->slug) }}">
+                                                    {{ $category->name }}
+                                                    <span class="categories-number">({{ $category->blogs->count() }})</span>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    @endif
+
 
                                 </ul>
                             </div>
                         </div>
                         <!--End Blog Category-->
 
-                        <!--Start Tags-->
-                        <div class="recent-post widgets mt60">
-                            <h3 class="mb30">Tags</h3>
-                            <div class="tabs">
-                                <a href="#">webdesign</a>
-                                <a href="#">design </a>
-                            </div>
+                        <!--Start Recent post-->
+                        <div class="recent-post widgets mt30">
+                            <h3 class="mb30">Bài đăng gần đây</h3>
+                            @if(isset($blogNews))
+
+                                @foreach($blogNews as $item)
+                                    <div class="media">
+                                        <div class="post-image bdr-radius">
+                                            <a href="{{ route('blog.detail', $item->slug) }}">
+                                                <img src="{{ get_image_url($item->image) }}" alt="" class="img-fluid" />
+                                            </a>
+                                        </div>
+                                        <div class="media-body post-info">
+                                            <h5>
+                                                <a href="{{ route('blog.detail', $item->slug) }}">
+                                                    {{ limit_text($item->title, 65) }}
+                                                </a>
+                                            </h5>
+                                            <p>
+                                                <i class="fas fa-clock"></i>
+                                                {{ $item->date_publish->format('d-m-Y') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+
                         </div>
-                        <!--End Tags-->
+                        <!--Start Recent post-->
+
 
                         <!--Start block for offer/ads-->
-                        <div class="offer-image">
+                        <div class="offer-image mt30">
                             <img src="{{ asset('asset/client/images/blog/strategy-guide.jpg') }}" alt="offer" class="img-fluid">
                         </div>
                         <!--End block for offer/ads-->

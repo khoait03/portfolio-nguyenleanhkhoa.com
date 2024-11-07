@@ -22,3 +22,4 @@ Route::get('/du-an/{slug}.html', [ProjectController::class, 'detail'])->name('pr
 
 Route::get('/bai-viet', [BlogController::class, 'index'])->name('blog');
 Route::get('/{slug}', [BlogController::class, 'detail'])->name('blog.detail');
+Route::get('/bai-viet/{category}', [BlogController::class, 'category'])->name('blog.category');

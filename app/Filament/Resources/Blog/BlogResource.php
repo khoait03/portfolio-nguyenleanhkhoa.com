@@ -131,8 +131,11 @@ class BlogResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('id')->label('#'),
+                Tables\Columns\TextColumn::make('row_number')
+                    ->label('#')
+                    ->getStateUsing(fn($rowLoop) => $rowLoop->index + 1),
                 Tables\Columns\ImageColumn::make('image')->label('Hình ảnh'),
                 Tables\Columns\TextColumn::make('title')
                     ->sortable()->searchable()

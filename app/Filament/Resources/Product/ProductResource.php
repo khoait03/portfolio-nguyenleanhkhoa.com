@@ -171,7 +171,11 @@ class ProductResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
+                Tables\Columns\TextColumn::make('row_number')
+                    ->label('#')
+                    ->getStateUsing(fn($rowLoop) => $rowLoop->index + 1),
                 Tables\Columns\ImageColumn::make('main_image')->label('Hình ảnh'),
                 Tables\Columns\TextColumn::make('name')->label('Têm sản phẩm'),
                 Tables\Columns\TextColumn::make('categories.name')

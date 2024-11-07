@@ -223,24 +223,29 @@
                     <!--Start Recent post-->
                     <!--Start Blog Category-->
                     <div class="recent-post widgets mt60">
-                        <h3 class="mb30">Danh mục</h3>
+                        <h3 class="mb30">Chuyên mục bài viết</h3>
                         <div class="blog-categories">
                             <ul>
                                 <li>
-                                    <a href="#">Business <span class="categories-number">(2)</span></a>
+                                    <a href="{{  route('blog') }}">
+                                        Tất cả
+                                    </a>
                                 </li>
+                                @if(isset($categories) && is_object($categories))
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <a href="{{  route('blog.category', $category->slug) }}">
+                                                {{ $category->name }}
+                                                <span class="categories-number">({{ $category->blogs->count() }})</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>
                     <!--End Blog Category-->
-                    <!--Start Tags-->
-                    <div class="recent-post widgets mt60">
-                        <h3 class="mb30">Tags</h3>
-                        <div class="tabs">
-                            <a href="">webdesign</a>
-                        </div>
-                    </div>
-                    <!--End Tags-->
+
                     <!--Google offer/ads-->
                     <div class="offer-image mt60">
 
