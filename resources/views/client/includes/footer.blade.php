@@ -30,7 +30,7 @@
                     <a href="#" class="btn-main bg-btn3 lnk mt20">Become Partner <i class="fas fa-chevron-right fa-icon"></i><span class="circle"></span></a>
                 </div>
                 <div class="col-lg-3 col-sm-6">
-                    <h5>Contact Us</h5>
+                    <h5>Liên hệ</h5>
                     <ul class="footer-address-list ftr-details">
                         <li>
                             <span><i class="fas fa-envelope"></i></span>
@@ -47,7 +47,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-2 col-sm-6">
-                    <h5>Company</h5>
+                    <h5>Trang</h5>
                     <ul class="footer-address-list link-hover">
                         <li><a href="get-quote.html">Contact</a></li>
                         <li><a href="javascript:void(0)">Customer's FAQ</a></li>
@@ -58,7 +58,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-sm-6 footer-blog-">
-                    <h5>Latest Blogs</h5>
+                    <h5>Bài biết mới</h5>
                     <div class="single-blog-">
                         <div class="post-thumb"><a href="#"><img src="{{ asset('asset/client/images/blog/blog-small.jpg') }}" alt="blog"></a></div>
                         <div class="content">

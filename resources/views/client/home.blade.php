@@ -116,8 +116,11 @@
                 <div class="col-lg-6">
                     <div class="common-heading ptag">
                         <span>Service</span>
-                        <h2>Our Services</h2>
-                        <p class="mb30">We think big and have hands in all leading technology platforms to provide you wide array of services.</p>
+                        <h2>Dịch vụ</h2>
+                        <p class="mb30">
+                            Chúng tôi nghĩ lớn và nắm trong tay tất cả các nền tảng
+                            công nghệ hàng đầu để cung cấp cho bạn nhiều loại dịch vụ.
+                        </p>
                     </div>
                 </div>
             </div>
