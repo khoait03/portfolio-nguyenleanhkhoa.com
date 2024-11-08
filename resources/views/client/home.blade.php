@@ -194,7 +194,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="common-heading text-l">
-                        <span>Why Choose Us</span>
+                        <span>TẠI SAO CHỌN CHÚNG TÔI</span>
                         <h2 class="mb20">Why The Niwax <span class="text-second text-bold">Ranked Top</span> Among The Leading Web & App Development Companies</h2>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                         <div class="itm-media-object mt40 tilt-3d">

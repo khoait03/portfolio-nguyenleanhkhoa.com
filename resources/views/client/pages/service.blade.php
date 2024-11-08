@@ -11,9 +11,15 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="bread-titlev2">
-                        <h1 class="wow fadeInUp" data-wow-delay=".2s">Need A Premium & Creative Website Designing?</h1>
-                        <p class="mt20 wow fadeInUp" data-wow-delay=".4s">From Startup to Enterprise be ready and don't worry about design and user experience.</p>
-                        <a href="#" class="btn-main bg-btn2 lnk mt20 wow zoomInDown" data-wow-delay=".6s">Get Quote <i class="fas fa-chevron-right fa-icon"></i><span class="circle"></span></a>
+                        <h1 class="wow fadeInUp" data-wow-delay=".2s">Dịch vụ</h1>
+                        <p class="mt20 wow fadeInUp" data-wow-delay=".4s">
+                            Từ Khởi nghiệp đến Doanh nghiệp, hãy sẵn sàng và đừng lo lắng
+                            về thiết kế cũng như trải nghiệm người dùng.
+                        </p>
+                        <a href="#" class="btn-main bg-btn2 lnk mt20 wow zoomInDown" data-wow-delay=".6s">
+                            Nhận báo giá
+                            <i class="fas fa-chevron-right fa-icon"></i>
+                            <span class="circle"></span></a>
                     </div>
                 </div>
             </div>
@@ -40,8 +46,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="common-heading">
-                        <span>Services We’re Provided</span>
-                        <h2 class="mb30">Our Digital Marketing Services</h2>
+                        <span>DỊCH VỤ CHÚNG TÔI CUNG CẤP</span>
+                        <h2 class="mb30">Dịch vụ tiếp thiết kế website, marketing trên internet</h2>
                     </div>
                 </div>
             </div>
@@ -51,7 +57,7 @@
                         <div class="block-space-">
                             <span>PPC</span>
                             <h4>Digital Media & PPC Advertising</h4>
-                            <a href="javascript:void(0)">Learn More <i class="fas fa-chevron-right fa-icon"></i></a>
+                            <a href="javascript:void(0)">Tìm hiểu thêm <i class="fas fa-chevron-right fa-icon"></i></a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +66,7 @@
                         <div class="block-space-">
                             <span>MARKETING </span>
                             <h4>Content Marketing Service</h4>
-                            <a href="javascript:void(0)">Learn More <i class="fas fa-chevron-right fa-icon"></i></a>
+                            <a href="javascript:void(0)">Tìm hiểu thêm <i class="fas fa-chevron-right fa-icon"></i></a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +75,7 @@
                         <div class="block-space-">
                             <span>SEO</span>
                             <h4>Search Engine Optimization</h4>
-                            <a href="javascript:void(0)">Learn More <i class="fas fa-chevron-right fa-icon"></i></a>
+                            <a href="javascript:void(0)">Tìm hiểu thêm <i class="fas fa-chevron-right fa-icon"></i></a>
                         </div>
                     </div>
                 </div>
@@ -78,7 +84,7 @@
                         <div class="block-space-">
                             <span>WEB DESIGN</span>
                             <h4>Website Design & Development</h4>
-                            <a href="javascript:void(0)">Learn More <i class="fas fa-chevron-right fa-icon"></i></a>
+                            <a href="javascript:void(0)">Tìm hiểu thêm <i class="fas fa-chevron-right fa-icon"></i></a>
                         </div>
                     </div>
                 </div>
