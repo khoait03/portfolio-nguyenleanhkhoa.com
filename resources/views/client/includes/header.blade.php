@@ -45,23 +45,6 @@
                             </div>
                         </div>
                     </li>
-                    <li class="sbmenu rpdropdown">
-                        <a href="" class="menu-links">Khác</a>
-                        <div class="nx-dropdown menu-dorpdown">
-                            <div class="sub-menu-section">
-                                <div class="sub-menu-center-block">
-                                    <div class="sub-menu-column smfull">
-                                        <ul>
-                                            <li>
-                                                <a href="">Danh mục</a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
                 <!-- mobile + desktop - sidebar menu- dark mode witch and button -->
                 <ul class="nav-list right-end-btn">
