@@ -58,6 +58,9 @@ class SiteSettingResource extends Resource
                                 TextInput::make('slogan')
                                     ->label('Slogan')
                                     ->nullable(),
+                                TextInput::make('test')
+                                    ->label('Slogan')
+                                    ->nullable(),
                                 FileUpload::make('logo_website')
                                     ->label('Logo Website')
                                     ->helperText('Chọn định dạng ảnh PNG, JPG, kích thước tối đa 2MB')
