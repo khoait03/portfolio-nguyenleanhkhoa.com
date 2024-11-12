@@ -109,39 +109,7 @@ class BlogController extends Controller
         ]);
     }
 
-    public function cate(Request $request, $slug)
-    {
-        // Find the category by slug
-        $category = $this->blogCategoryModel->where('slug', $slug)->first();
-        if (!$category) {
-            abort(404);
-        }
 
-        $search = $request->input('tim-kiem');
-
-        // Query blogs associated with the category
-        $query = $this->blogModel->where('status', 1)
-            ->whereHas('categories', function ($query) use ($category) {
-                $query->where('blog_categories.id', $category->id);
-            });
-
-        // Apply search filter if search term is provided
-        if ($search) {
-            $query->where(function ($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%")
-                    ->orWhere('content', 'like', "%{$search}%");
-            });
-        }
-
-        $blogs = $query->paginate(9);
-        $categories = $this->blogCategoryModel->all();
-
-        return view('client.blogs.index', [
-            'blogs' => $blogs,
-            'categories' => $categories,
-            'search' => $search
-        ]);
-    }
 
 
 }
