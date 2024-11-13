@@ -125,9 +125,6 @@ class ImageResource extends Resource
                     ->label('#')
                     ->getStateUsing(fn($rowLoop) => $rowLoop->index + 1),
 
-                Tables\Columns\TextColumn::make('row_number')
-                    ->label('#')
-                    ->getStateUsing(fn($rowLoop) => $rowLoop->index + 1),
 
                 // Cột hiển thị product_name
                 Tables\Columns\ImageColumn::make('image')

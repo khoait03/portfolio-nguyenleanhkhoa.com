@@ -178,9 +178,7 @@ class ProductResource extends Resource
                     ->getStateUsing(fn($rowLoop) => $rowLoop->index + 1),
                 Tables\Columns\ImageColumn::make('main_image')->label('Hình ảnh'),
                 Tables\Columns\TextColumn::make('name')->label('Têm sản phẩm'),
-                Tables\Columns\TextColumn::make('categories.name')
-                    ->sortable()
-                    ->label('Danh mục'),
+
                 Tables\Columns\TextColumn::make('categories.name')
                     ->sortable()
                     ->label('Danh mục'),
