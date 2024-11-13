@@ -181,6 +181,9 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('categories.name')
                     ->sortable()
                     ->label('Danh mục'),
+                Tables\Columns\TextColumn::make('categories.name')
+                    ->sortable()
+                    ->label('Danh mục'),
                 Tables\Columns\TextColumn::make('price')
                     ->label('Giá tiền')
                     ->suffix('.đ')
