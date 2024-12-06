@@ -19,6 +19,13 @@
 {{--</div>--}}
 <!--End Preloader -->
 
+<style>
+    /* yoeunes/toastr */
+    .fl-wrapper {
+        z-index: 2147483647 !important;
+    }
+</style>
+
 <!-- header -->
 @hasSection('header')
     @yield('header')

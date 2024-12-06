@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Client\ContactNotification;
+use App\Jobs\SendContactNotification;
 
 class HomeController extends Controller
 {
@@ -39,17 +40,28 @@ class HomeController extends Controller
 
     public function contactSubmit(Request $request)
     {
-        Mail::to('admin@example.com')->send(
-            new ContactNotification(
-                $request->input('name'),
-                $request->input('phone'),
-                $request->input('email'),
-                $request->input('service'),
-                $request->input('message')
-            )
-        );
+        // Mail::to(env('MAIL_ADMIN'))
+        // ->send(
+        //     new ContactNotification(
+        //         $request->input('name'),
+        //         $request->input('phone'),
+        //         $request->input('email'),
+        //         $request->input('service'),
+        //         $request->input('message')
+        //     )
+        // );
 
         // flash()->success('Email đã được gửi thành công.', [], 'Thành công!');
+        // return back();
+
+
+        // Dữ liệu từ form liên hệ
+        $data = $request->only(['name', 'phone', 'email', 'service', 'message']);
+
+        // Dispatch Job
+        SendContactNotification::dispatch($data);
+
+        flash()->success('Email đã được gửi thành công.', [], 'Thành công!');
         return back();
     }
 
