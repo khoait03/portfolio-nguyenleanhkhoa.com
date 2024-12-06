@@ -41,3 +41,10 @@ if (!function_exists('format_price_vnd')) {
         return number_format($price, 0, ',', '.').$after_price;
     }
 }
+
+if (!function_exists('check_empty')) {
+    function check_empty($content, $default): string
+    {
+        return !empty($content) && !is_null($content) ? $content : $default;
+    }
+}

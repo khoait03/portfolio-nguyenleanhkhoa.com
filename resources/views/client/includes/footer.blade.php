@@ -57,6 +57,14 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-sm-6 footer-blog-">
+                    <style>
+                        .line-clamp-1 {
+                            display: -webkit-box;
+                            overflow: hidden;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 1;
+                        }
+                    </style>
                     
                     <h5>Bài biết mới</h5>
                     @foreach ($blogNews as $blog)
@@ -65,7 +73,7 @@
                             
                             <div class="content">
                             
-                                <h4 class="title"><a href="{{ route('blog.detail', $blog->slug) }}">{{ limit_text($blog->title, 70)}}</a></h4>
+                                <h4 class="title line-clamp-1"><a href="{{ route('blog.detail', $blog->slug) }}">{{ $blog->title, 70}}</a></h4>
                             </div>
                         </div>
                     @endforeach

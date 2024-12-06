@@ -83,38 +83,39 @@
                         <p class="mb60 mt10">Chúng tôi sẽ phản hồi lại cho bạn ngay khi nhận được tin nhắn</p>
                     </div>
                     <div class="form-block">
-                        <form id="contactForm" data-bs-toggle="validator" class="shake">
+                        <form method="POST" id="contactForm" data-bs-toggle="validator" class="shake">
+                            @csrf
                             <div class="row">
                                 <div class="form-group col-sm-6">
-                                    <input type="text"  id="name" placeholder="Họ tên" required data-error="Please fill Out">
-                                    <div class="help-block with-errors"></div>
+                                    <input type="text" name="name"  id="name" required placeholder="Họ tên" data-error="Vui lòng nhập thông tin">
+                                
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <input type="email"  id="email" placeholder="Email" required>
-                                    <div class="help-block with-errors"></div>
+                                    <input type="email" name="email"  id="email" placeholder="Email" required>
+                                    
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-sm-6">
-                                    <input type="text" id="mobile" placeholder="Số điện thoại" required data-error="Please fill Out">
+                                    <input type="text"  name="phone" id="mobile" placeholder="Số điện thoại" required data-error="Please fill Out">
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <select name="Dtype" id="Dtype" required>
+                                    <select name="service" id="Dtype" required>
                                         <option value="">Chọn dịch vụ</option>
-                                        <option value="web">Thiết kế website</option>
-                                        <option value="graphic">Digital Marketing</option>
-                                        <option value="video">Khác</option>
+                                        <option value="Thiết kế website">Thiết kế website</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Khác">Khác</option>
                                     </select>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <textarea id="message" rows="5" placeholder="Nội dung" required></textarea>
+                                <textarea id="message" name="message" rows="5" placeholder="Nội dung" required></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" checked="checked">
+                                <input type="checkbox" class="custom-control-input" id="customCheck" name="check" checked="checked">
                                 <label class="custom-control-label" for="customCheck">Tôi đồng ý với <a href="javascript:void(0)">Điều khoản &amp;  Điều kiện</a> của doanh nghiệp.</label>
                             </div>
                             <button type="submit" id="form-submit" class="btn lnk btn-main bg-btn">GỬI TIN <span class="circle"></span></button>
