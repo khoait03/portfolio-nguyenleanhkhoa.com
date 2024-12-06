@@ -11,21 +11,59 @@
                         <p class="wow fadeIn" data-wow-delay="0.6s">
                             Giải pháp phát triển Website và App nhằm chuyển đổi và đổi mới doanh nghiệp.
                         </p>
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-linkedin"></i>
+                        @if (isset($settings->linkedin)) 
+                            <a target="_blank" href="{{ $settings->linkedin}}" class="btn-round- btn-br bg-btn2">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        @endif
+
+                        @if (isset($settings->github)) 
+                            <a target="_blank" href="{{ $settings->github}}" class="btn-round- btn-br bg-btn2">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        @endif
+
+                        @if (isset($settings->facebook)) 
+                            <a target="_blank" href="{{ $settings->facebook}}" class="btn-round- btn-br bg-btn2">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        @endif
+
+                        @if (isset($settings->twitter)) 
+                            <a target="_blank" href="{{ $settings->twitter}}" class="btn-round- btn-br bg-btn2">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        @endif
+
+                        @if (isset($settings->instagram)) 
+                            <a target="_blank" href="{{ $settings->instagram}}" class="btn-round- btn-br bg-btn2">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        @endif
+
+                        @if (isset($settings->telegram)) 
+                            <a target="_blank" href="{{ $settings->telegram}}" class="btn-round- btn-br bg-btn2">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                        @endif
+
+                        @if (isset($settings->youtube)) 
+                            <a target="_blank" href="{{ $settings->youtube}}" class="btn-round- btn-br bg-btn2">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        @endif
+
+                        
+                        
+                        @if (isset($settings->phone)) 
+                            <a target="_blank" href="{{ $settings->phone}}" class="btn-round- btn-br bg-btn2">
+                                <i class="fas fa-phone-alt"></i>
+                            </a>
+                        @endif
+                        
+                        
                         </a>
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="" class="btn-round- btn-br bg-btn2">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a data-bs-toggle="offcanvas" href="#offcanvasExample" class="btn-round- btn-br bg-btn2">
-                            <i class="fas fa-phone-alt"></i>
-                        </a>
+                        
                         <div class="awards-block-tt  wow fadeIn" data-wow-delay="1s"><img src="{{ asset('asset/client/images/hero/awards-logo.png') }}" alt="awards-logo" class="img-fluid"/></div>
                     </div>
                 </div>
@@ -324,8 +362,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="common-heading">
-                        <span>Our Locations</span>
-                        <h2>Our Office</h2>
+                        <span>ĐỊA ĐIỂM CỦA CHÚNG TÔI</span>
+                        <h2>Văn phòng của chúng tôi</h2>
                     </div>
                 </div>
             </div>
@@ -336,8 +374,8 @@
                             <img src="{{ asset('asset/client/images/location/newyork.png') }}" alt="New York" class="img-fluid" />
                         </div>
                         <div class="office-text">
-                            <h4>New York</h4>
-                            <p>603 FA Forest Avenue, New York, USA 10021</p>
+                            <h4>Cần Thơ</h4>
+                            <p>An Khánh, Ninh Kiều, Cần Thơ</p>
                             <a href="javascript:void(0)" target="blank" class="btn-outline rount-btn"><i class="fas fa-map-marker-alt"></i></a>
                             <a href="javascript:void(0)" target="blank" class="btn-outline rount-btn"><i class="fas fa-phone-alt"></i></a>
                             <a href="javascript:void(0)" target="blank" class="btn-outline rount-btn"><i class="fas fa-envelope"></i></a>
@@ -351,8 +389,8 @@
                             <img src="{{ asset('asset/client/images/location/sydeny.png') }}" alt="sydney" class="img-fluid" />
                         </div>
                         <div class="office-text">
-                            <h4>Sydney</h4>
-                            <p>2449 Columbia Boulevard, Sydney, 10021</p>
+                            <h4>Tiền Giang</h4>
+                            <p>Hữu Đạo, Châu Thành, Tiền Giang</p>
                             <a href="javascript:void(0)" target="blank" class="btn-outline rount-btn"><i class="fas fa-map-marker-alt"></i></a>
                             <a href="javascript:void(0)" target="blank" class="btn-outline rount-btn"><i class="fas fa-phone-alt"></i></a>
                             <a href="javascript:void(0)" target="blank" class="btn-outline rount-btn"><i class="fas fa-envelope"></i></a>
@@ -366,8 +404,8 @@
                             <img src="{{ asset('asset/client/images/location/rome.png') }}" alt="rome" class="img-fluid" />
                         </div>
                         <div class="office-text">
-                            <h4>Rome</h4>
-                            <p>9988 Piazzetta Scalette Rubiani 99, Rome, 84090</p>
+                            <h4>Hồ Chí Minh</h4>
+                            <p>Long Thạnh Mỹ, Thủ Đức, Hồ Chí Minh</p>
                             <a href="javascript:void(0)" target="blank" class="btn-outline rount-btn"><i class="fas fa-map-marker-alt"></i></a>
                             <a href="javascript:void(0)" target="blank" class="btn-outline rount-btn"><i class="fas fa-phone-alt"></i></a>
                             <a href="javascript:void(0)" target="blank" class="btn-outline rount-btn"><i class="fas fa-envelope"></i></a>
@@ -385,46 +423,66 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="common-heading-2">
-                        <span class="text-effect-1">what's going on</span>
-                        <h2 class="mb30">Bài viết mới nhất</h2>
+                    <div class="common-heading">
+                        <h2>Bài viết</h2>
+                    
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 mt30">
-                    <div class="single-blog-post- up-hor shdo">
-                        <div class="single-blog-img-">
-                            <a href="#"><img src="{{ asset('asset/client/images/blog/blog-dg-1.jpg') }}" alt="girl" class="img-fluid"/></a>
-                            <div class="entry-blog-post dg-bg2">
-                                <span class="bypost-"><a href="#"><i class="fas fa-tag"></i> Nodejs</a></span>
-                                <span class="posted-on-">
-                           <a href="#"><i class="fas fa-clock"></i> Sep 23, 2020</a>
-                           </span>
-                            </div>
-                        </div>
-                        <div class="blog-content-tt">
-                            <div class="single-blog-info-">
-                                <h4><a href="#">Everything You Need To Know About Nodejs!</a></h4>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                            <div class="post-social">
-                                <div class="ss-inline-share-wrapper ss-hover-animation-fade ss-inline-total-counter-left ss-left-inline-content ss-small-icons ss-with-spacing ss-circle-icons ss-without-labels">
-                                    <div class="ss-inline-share-content">
-                                        <div class="ss-social-icons-container">
-                                            <a href="javascript:void(0)">Shares</a>
-                                            <a href="javascript:void(0)" target="blank"><i class="fab fa-facebook"></i></a>
-                                            <a href="javascript:void(0)" target="blank"><i class="fab fa-twitter"></i></a>
-                                            <a href="javascript:void(0)" target="blank"><i class="fab fa-linkedin"></i></a>
-                                            <a href="javascript:void(0)" target="blank"><i class="fas fa-envelope"></i></a>
-                                            <a href="javascript:void(0)" target="blank"><i class="fab fa-facebook-messenger"></i></a>
+
+                @if(is_object($blogNews))
+                    @foreach($blogNews as $blog)
+
+                        <div class="col-lg-4 mt30">
+                            <div class="single-blog-post- shdo">
+                                <div class="single-blog-img-">
+                                    <a href="{{ route('blog.detail', $blog->slug) }}">
+                                        <img src="{{ get_image_url($blog->image) }}" alt="{{ $blog->title }}" class="img-fluid">
+                                    </a>
+                                    <div class="entry-blog-post dg-bg2">
+                                        <span class="bypost-">
+                                            <a href="#">
+                                                <i class="fas fa-tag"></i>
+
+
+                                                @if(isset($blog->categories) && $blog->categories->isNotEmpty())
+                                                    {{ $blog->categories->first()->name }}
+                                                @endif
+                                            </a>
+                                        </span>
+                                        <span class="posted-on-">
+                                            <a href="#"><i class="fas fa-clock"></i> {{ $blog->date_publish->format('d-m-Y') }}</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="blog-content-tt">
+                                    <div class="single-blog-info-">
+                                        <h4>
+                                            <a href="{{ route('blog.detail', $blog->slug) }}">
+                                                {{ limit_text($blog->title, 50) }}
+                                            </a>
+                                        </h4>
+
+                                        <a style="color: #6A6A8E" href="{{ route('blog.detail', $blog->slug) }}">
+                                            <p>{{ limit_text($blog->content, 115) }}</p>
+                                        </a>
+
+                                    </div>
+                                    <div class="post-social">
+                                        <div class="ss-inline-share-wrapper ss-hover-animation-fade ss-inline-total-counter-left ss-left-inline-content ss-small-icons ss-with-spacing ss-circle-icons ss-without-labels">
+                                            <div class="ss-inline-share-content">
+                                                <div class="ss-social-icons-container">
+                                                    <a href="javascript:void(0)"><i class="fas fa-user"></i> Khoa Nguyen</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
 
             </div>
         </div>
