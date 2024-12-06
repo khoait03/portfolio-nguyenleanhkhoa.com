@@ -1,9 +1,9 @@
 <head>
     <meta charset="utf-8"/>
-    <title>Nguyễn Lê Anh Khoa &amp; Khoa - Daily</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    
+
+    @include("client.includes.seo")
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#2e2a8f">

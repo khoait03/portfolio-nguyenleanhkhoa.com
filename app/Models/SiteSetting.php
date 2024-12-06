@@ -26,7 +26,7 @@ class SiteSetting extends Model
         'short_intro',
         'company_address',
         'tax_code',
-        'hotline',
+        'phone',
         'email',
         'website',
         'map',
