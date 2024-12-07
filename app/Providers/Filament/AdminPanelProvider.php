@@ -28,7 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->favicon('https://laraveldaily.com/favicon.png')
+            ->favicon(asset('default/logo/favicon-daily.png'))
             ->colors([
                 'primary' => Color::Blue,
             ])

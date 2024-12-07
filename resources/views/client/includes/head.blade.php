@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#2e2a8f">
-    <!--website-favicon-->
-    <link rel="icon" href="https://laraveldaily.com/favicon.png" />
+    
     <!--plugin-css-->
     <link href="{{ asset('asset/client/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('asset/client/css/plugin.min.css') }}" rel="stylesheet">

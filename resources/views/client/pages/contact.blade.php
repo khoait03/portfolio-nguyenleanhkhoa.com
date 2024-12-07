@@ -83,7 +83,7 @@
                         <p class="mb60 mt10">Chúng tôi sẽ phản hồi lại cho bạn ngay khi nhận được tin nhắn</p>
                     </div>
                     <div class="form-block">
-                        <form method="POST" id="contactForm" data-bs-toggle="validator" class="shake">
+                        <form action="{{ route('contact.submit') }}" method="POST" id="contactForm" data-bs-toggle="validator" class="shake">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-sm-6">

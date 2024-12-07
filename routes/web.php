@@ -16,7 +16,7 @@ Route::get('/danh-muc/{slug}', [ProductController::class, 'product_by_category']
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dich-vu', [HomeController::class, 'service'])->name('service');
 Route::get('/lien-he', [HomeController::class, 'contact'])->name('contact');
-Route::post('/lien-he', [HomeController::class, 'contactSubmit']);
+Route::post('/lien-he', [HomeController::class, 'contactSubmit'])->name('contact.submit');
 
 Route::get('/du-an', [ProjectController::class, 'index'])->name('project');
 Route::get('/du-an/{slug}.html', [ProjectController::class, 'detail'])->name('project.detail');

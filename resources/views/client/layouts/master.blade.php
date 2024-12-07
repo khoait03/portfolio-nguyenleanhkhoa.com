@@ -44,35 +44,36 @@
         </div>
         <div class="form-block sidebarform">
             <h4>Liên hệ</h4>
-            <form id="contactForm" data-bs-toggle="validator" class="shake mt20">
+            <form action="{{ route('contact.submit') }}" id="contactForm" method="POST" data-bs-toggle="validator" class="shake mt20">
+                @csrf
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        <input type="text"  id="name" placeholder="Họ tên" required data-error="Please fill Out">
+                        <input type="text" name="name"  placeholder="Họ tên" required data-error="Please fill Out">
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-12">
-                        <input type="email"  id="email" placeholder="Email" required>
+                        <input type="email" name="email" placeholder="Email" required>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        <input type="text" id="mobile" placeholder="Số điện thoại" required data-error="Please fill Out">
+                        <input type="text" id="mobile" name="phone" placeholder="Số điện thoại" required data-error="Please fill Out">
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-12">
-                        <select name="Dtype" id="Dtype" required>
+                        <select name="service" id="Dtype" required>
                             <option value="">Chọn yêu cầu</option>
-                            <option value="web">Thết kế website</option>
-                            <option value="graphic">Marketing internet</option>
+                            <option value="Thết kế website">Thết kế website</option>
+                            <option value="Marketing internet">Marketing internet</option>
                             <option value="Mobile">Mobile</option>
-                            <option value="khac">Khác</option>
+                            <option value="Khác">Khác</option>
                         </select>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <textarea id="message" rows="5" placeholder="Nội dung" required></textarea>
+                    <textarea name="message" rows="5" placeholder="Nội dung" required></textarea>
                     <div class="help-block with-errors"></div>
                 </div>
                 <button type="submit" id="form-submit" class="btn lnk btn-main bg-btn">Gửi tin nhắn <span class="circle"></span></button>
@@ -83,40 +84,58 @@
         <div class="getintouchblock mt30">
             <h4>Thông tin liên hệ</h4>
             <p class="mt10">Dịch vụ sản phẩm số, thiết kế website, thiết kế Logo, marketing internet, SEO</p>
-            <div class="media mt15">
-                <div class="icondive"><img src="{{ asset('asset/client/images/icons/call.svg') }}" alt="icon"></div>
-                <div class="media-body getintouchinfo">
-                    <a href="tel:123456790">+91-123 4567 890 <span>Mon-Fri 9am - 6pm</span></a>
+            
+            @if (isset($settings->phone)) 
+                <div class="media mt15">
+                    <div class="icondive"><img src="{{ asset('asset/client/images/icons/call.svg') }}" alt="icon"></div>
+                    <div class="media-body getintouchinfo">
+                        <a href="tel:{{ $settings->phone }}">{{ $settings->phone }}<span>T2 - T7, 9am - 10pm</span></a>
+                    </div>
                 </div>
-            </div>
-            <div class="media mt15">
-                <div class="icondive"><img src="{{ asset('asset/client/images/icons/whatsapp.svg') }}" alt="icon"></div>
-                <div class="media-body getintouchinfo">
-                    <a href="tel:123456790">+91-123 4567 890 <span>Mon-Fri 9am - 6pm</span></a>
+            @endif
+
+            @if (isset($settings->email)) 
+                <div class="media mt15">
+                    <div class="icondive"><img src="{{ asset('asset/client/images/icons/mail.svg') }}" alt="icon"></div>
+                    <div class="media-body getintouchinfo">
+                        <a href="mailto:{{ $settings->email}}">{{ $settings->email}} <span>Hỗ trợ Online</span></a>
+                    </div>
                 </div>
-            </div>
-            <div class="media mt15">
-                <div class="icondive"><img src="{{ asset('asset/client/images/icons/mail.svg') }}" alt="icon"></div>
-                <div class="media-body getintouchinfo">
-                    <a href="mailto:info@website.com">info@website.com <span>Online Support</span></a>
-                </div>
-            </div>
+            @endif
+            
+            
+            
             <div class="media mt15">
                 <div class="icondive"><img src="{{ asset('asset/client/images/icons/map.svg') }}" alt="icon"></div>
                 <div class="media-body getintouchinfo">
-                    <a href="mailto:info@website.com">Jaipur, Rajasthan, India<span>Visit Our Office</span></a>
+                    <a >Vietnam<span>Cần Thơ, Hồ Chí Minh, Tiền Giang</span></a>
                 </div>
             </div>
         </div>
         <div class="contact-data mt30">
-            <h4>Follow Us On:</h4>
+            <h4>Mạng xã hội của tôi</h4>
             <div class="social-media-linkz mt10">
-                <a href="javascript:void(0)" target="blank"><i class="fab fa-facebook"></i></a>
-                <a href="javascript:void(0)" target="blank"><i class="fab fa-twitter"></i></a>
-                <a href="javascript:void(0)" target="blank"><i class="fab fa-instagram"></i></a>
-                <a href="javascript:void(0)" target="blank"><i class="fab fa-linkedin"></i></a>
-                <a href="javascript:void(0)" target="blank"><i class="fab fa-youtube"></i></a>
-                <a href="javascript:void(0)" target="blank"><i class="fab fa-pinterest-p"></i></a>
+                @if (isset($settings->facebook)) 
+                    <a href="{{ $settings->facebook}}" target="blank"><i class="fab fa-facebook"></i></a>
+                @endif
+
+                @if (isset($settings->twitter)) 
+    
+                    <a href="{{ $settings->twitter}}" target="blank"><i class="fab fa-twitter"></i></a>
+                @endif
+
+                @if (isset($settings->instagram)) 
+                    <a href="{{ $settings->instagram}}" target="blank"><i class="fab fa-instagram"></i></a>
+                @endif
+
+                @if (isset($settings->linkedin)) 
+                    <a href="{{ $settings->linkedin}}" target="blank"><i class="fab fa-linkedin"></i></a>
+                @endif
+
+                @if (isset($settings->youtube)) 
+        
+                    <a href="{{ $settings->youtube}}" target="blank"><i class="fab fa-youtube"></i></a>
+                @endif
             </div>
         </div>
     </div>

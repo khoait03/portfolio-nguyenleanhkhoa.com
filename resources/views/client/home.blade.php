@@ -492,7 +492,7 @@
 
 
     <!-- lead generaton popup start -->
-    <div class="modal leadpopup" id="leadModal">
+    {{-- <div class="modal leadpopup" id="leadModal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
@@ -502,21 +502,37 @@
                             <h3>Liên hệ ngay để được tư vấn</h3>
                             <p class="mt10"></p>
                             <div class="form-block mt20">
-                                <form action="#" id="quotes-form" method="post">
+                                <form action="{{ route('contact.submit')}}"  method="POST" id="quotes-form" method="post">
+                                    @csrf
                                     <div class="fieldsets row">
                                         <div class="col-md-12 form-group floating-label">
-                                            <input type="text" placeholder=" " required="required" class="floating-input">
+                                            <input type="text" name="name" placeholder=" " required="required" class="floating-input">
                                             <label>Họ tên*</label>
                                         </div>
                                         <div class="col-md-12 form-group floating-label">
-                                            <input type="email" placeholder=" " required="required" class="floating-input">
+                                            <input type="email" name="email" placeholder=" " required="required" class="floating-input">
                                             <label>Email*</label>
                                         </div>
                                     </div>
                                     <div class="fieldsets row">
                                         <div class="col-md-12 form-group floating-label">
-                                            <input type="tel" placeholder=" " required="required" class="floating-input">
+                                            <input type="tel" name="phone" placeholder=" " required="required" class="floating-input">
                                             <label>Số điện thoại*</label>
+                                        </div>
+                                        <div class="col-md-12 form-group floating-label">
+                                            <select name="service" id="Dtype" required>
+                                                <option value="">Chọn yêu cầu</option>
+                                                <option value="Thết kế website">Thết kế website</option>
+                                                <option value="Marketing internet">Marketing internet</option>
+                                                <option value="Mobile">Mobile</option>
+                                                <option value="Khác">Khác</option>
+                                            </select>
+                                            
+                                        </div>
+                                        <div class="col-md-12 form-group floating-label">
+                                            <textarea name="message" rows="5" placeholder="Nội dung" required></textarea>
+                    
+                                        
                                         </div>
                                     </div>
                                     <div class="fieldsets mt20">
@@ -534,5 +550,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

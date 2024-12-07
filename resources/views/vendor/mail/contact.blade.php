@@ -9,8 +9,8 @@
 <body style="font-family: Arial, sans-serif; color: #333; margin: 0; padding: 20px; background-color: #f4f4f9;">
 
 <div style="border: 1px solid #ddd; border-radius: 5px; padding: 20px; max-width: 700px; margin: 20px auto; background-color: #ffffff;">
-    <div class="text-center">
-        <h3  style="color: #333;">Có yêu tư vấn từ {{ $email }}</h3>
+    <div style="text-align: center;">
+        <h3 style="color: #333;">Có yêu tư vấn từ {{ $email }}</h3>
     </div>
 
     <div style="margin-top: 15px;">
